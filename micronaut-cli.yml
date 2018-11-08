@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: com.crappyengineering.micronaut.demo
+---
+testFramework: junit
+sourceLanguage: java
