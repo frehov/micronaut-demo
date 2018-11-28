@@ -8,8 +8,6 @@
         </encoder>
     </appender>
 
-    <logger name="com.fasterxml.jackson" level="trace"/>
-    <logger name="com.zaxxer" level="trace"/>
     <root level="info">
         <appender-ref ref="STDOUT" />
     </root>

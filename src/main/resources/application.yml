@@ -1,21 +1,38 @@
 ---
 micronaut:
-    application:
-        name: micronaut-demo
-
+  application:
+    name: micronaut-demo
+---
+endpoints:
+  all:
+    path: '/admin'
+    sensitive: false
 ---
 datasources.default: {}
 ---
 datasources:
   default:
-    url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
-    driverClassName: org.h2.Driver
-    username: sa
-    password: ''    
+    url: jdbc:postgresql://${DB_SERVER:db}:${DB_PORT:5432}/jvm-chapter
+    driverClassName: org.postgresql.Driver
+    username: jvm-chapter
+    password: jvm-chapter
 jpa:
   default:
+    packages-to-scan:
+    - 'com.crappyengineering.micronaut.demo.model'
     properties:
       hibernate:
         hbm2ddl:
-          auto: update
-
+          auto: validate
+        generate_statistics: true
+        show_sql: true
+        format_sql: true
+---
+jackson:
+  serialization:
+    indentOutput: true
+    writeDatesAsTimeStamp: false
+  deserialization:
+    useBigIntegerForInts: true
+    failOnUnknownProperties: false
+  serialization-inclusion: NON_EMPTY

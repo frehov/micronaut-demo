@@ -12,6 +12,10 @@
         <exec.mainClass>com.crappyengineering.micronaut.demo.Application</exec.mainClass>
 
         <micronaut.version>1.0.1</micronaut.version>
+        <javax-persistence.version>2.2</javax-persistence.version>
+        <postgresql.version>42.2.5</postgresql.version>
+        <jackson.version>2.9.7</jackson.version>
+        <spring.version>5.0.10.RELEASE</spring.version>
     </properties>
 
     <repositories>
@@ -27,6 +31,13 @@
                 <groupId>io.micronaut</groupId>
                 <artifactId>micronaut-bom</artifactId>
                 <version>${micronaut.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>${jackson.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -50,9 +61,24 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.configuration</groupId>
+            <artifactId>micronaut-micrometer-core</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>io.micronaut</groupId>
             <artifactId>micronaut-inject</artifactId>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-management</artifactId>
         </dependency>
         <dependency>
             <groupId>io.micronaut</groupId>
@@ -80,15 +106,25 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-parameter-names</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>runtime</scope>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -194,6 +230,11 @@
                                 <groupId>io.micronaut</groupId>
                                 <artifactId>micronaut-validation</artifactId>
                                 <version>${micronaut.version}</version>
+                            </path>
+                            <path>
+                                <groupId>javax.persistence</groupId>
+                                <artifactId>javax.persistence-api</artifactId>
+                                <version>${javax-persistence.version}</version>
                             </path>
                         </annotationProcessorPaths>
                     </configuration>
