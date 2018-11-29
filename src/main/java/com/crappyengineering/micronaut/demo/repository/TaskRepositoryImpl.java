@@ -3,6 +3,7 @@ package com.crappyengineering.micronaut.demo.repository;
 import java.util.List;
 import java.util.Optional;
 
+import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.constraints.NotNull;
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import com.crappyengineering.micronaut.demo.model.Task;
 import io.micronaut.spring.tx.annotation.Transactional;
 
+@Singleton
 public class TaskRepositoryImpl implements TaskRepository {
 
     @PersistenceContext
