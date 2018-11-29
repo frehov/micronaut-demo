@@ -1,6 +1,7 @@
 package com.crappyengineering.micronaut.demo.controller;
 
 import static io.micronaut.http.HttpResponse.created;
+import static io.micronaut.http.HttpResponse.ok;
 import static io.micronaut.http.HttpStatus.NOT_FOUND;
 import static io.micronaut.http.HttpStatus.OK;
 
@@ -31,8 +32,8 @@ public class TaskController {
     TaskRepository taskRepository;
 
     @Get
-    public List<Task> index() {
-        return taskRepository.findAll().orElse(null);
+    public HttpResponse getAllTasks() {
+        return taskRepository.findAll().map(HttpResponse::ok).orElseGet(HttpResponse::noContent);
     }
 
     @Post

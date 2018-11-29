@@ -31,8 +31,8 @@ public class TasklistController {
     TasklistRepository tasklistRepository;
 
     @Get
-    public List<Tasklist> getAllTasklists() {
-        return tasklistRepository.findAll().orElse(null);
+    public HttpResponse getAllTasklists() {
+        return tasklistRepository.findAll().map(HttpResponse::ok).orElseGet(HttpResponse::noContent);
     }
 
     @Post
